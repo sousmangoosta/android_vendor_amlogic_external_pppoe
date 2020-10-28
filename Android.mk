@@ -56,37 +56,6 @@ endif
 include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES:= jni/src/pppoe_status.c \
-        jni/pppoe_jni.cpp \
-        jni/src/netwrapper.c
-
-
-LOCAL_SHARED_LIBRARIES := \
-        libcutils \
-        liblog \
-        libselinux
-
-
-LOCAL_SHARED_LIBRARIES += libandroid_runtime   libnativehelper
-LOCAL_SHARED_LIBRARIES += libc libcutils libnetutils
-LOCAL_C_INCLUDES :=  $(JNI_H_INCLUDE) \
-    $(LOCAL_PATH)/jni/src \
-    libnativehelper/include/nativehelper
-
-#LOCAL_C_INCLUDES += external/selinux/libselinux/include/ \
-                    external/selinux/libselinux/src
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE := libpppoejni
-LOCAL_PRELINK_MODULE := false
-
-ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26 && echo OK),OK)
-LOCAL_PROPRIETARY_MODULE := true
-endif
-
-include $(BUILD_SHARED_LIBRARY)
-
-
-include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= jni/src/pppoe_cli.c \
         jni/src/common.c \
         jni/src/netwrapper.c

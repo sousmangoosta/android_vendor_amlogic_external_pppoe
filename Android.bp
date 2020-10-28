@@ -1,0 +1,9 @@
+cc_library_shared {
+  name: "libpppoejni",
+  srcs: ["jni/src/pppoe_status.c","jni/pppoe_jni.cpp","jni/src/netwrapper.c"],
+  shared_libs: ["libcutils","liblog","libselinux","libandroid_runtime","libnativehelper","libc",
+    "libcutils","libnetutils"],
+  local_include_dirs: ["jni/src"],
+  header_libs: ["libhardware_headers","libnativehelper"],
+  proprietary: true,
+}
